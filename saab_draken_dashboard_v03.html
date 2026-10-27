@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAKEN · Saab market-entry decision explorer</title>
+<style>
+:root{--nav:#062e52;--nav2:#174d73;--gold:#b8a167;--ink:#17324b;--muted:#63778a;--border:#dbe4eb;--surface:#f5f7f9;--blue:#236994;--teal:#25877d;--amber:#bb873e;--purple:#7d88a4;--red:#af5653;--green:#287d72}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--surface);color:var(--ink);font:13px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.layout{max-width:1640px;margin:auto;min-height:100vh;display:grid;grid-template-columns:225px minmax(0,1fr)}aside{background:var(--nav);color:#fff;padding:27px 16px;display:flex;flex-direction:column;gap:25px}.brand{font-size:25px;font-weight:800;letter-spacing:.08em}.subbrand{margin-top:3px;color:#b9cedd}.nav{display:grid;gap:9px;margin-top:9px}.tab{border:1px solid #365f7f;border-radius:5px;background:transparent;color:#d8e7f0;display:block;text-align:left;padding:14px 12px;min-height:73px}.tab:hover,.tab:focus-visible,.tab.active{background:var(--nav2);border-color:#9fc1d7;color:#fff;outline:none}.tab strong{display:block;font-size:13px;margin-bottom:2px}.tab span{font-size:11px;opacity:.85;display:block}.asidefoot{margin-top:auto;font-size:10px;color:#afc3d2;line-height:1.6}main{min-width:0;padding:25px 26px 36px}.header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:17px;border-bottom:1px solid var(--border);margin-bottom:18px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800;color:var(--muted)}h1{font-size:25px;line-height:1.2;color:#092f51;margin:5px 0}h2{font-size:16px;color:#0c3b5f;margin:0 0 11px}h3{font-size:12px;color:#173d5c;margin:0 0 7px}p{margin:0 0 9px}.sub{color:var(--muted)}.tiny{font-size:10px;color:var(--muted)}.sm{font-size:11px}.badge{background:#fbf8ef;border:1px solid #d6c28b;border-radius:3px;color:#806831;font-size:10px;padding:5px 9px;font-weight:750;display:inline-block;white-space:nowrap}.page{display:none}.page.active{display:block}.panel,.kpi{border:1px solid var(--border);border-radius:6px;background:#fff;padding:17px;margin-bottom:13px}.kpi{margin:0;padding:13px 15px;min-height:96px}.kpi small{display:block;font-size:11px;color:var(--muted)}.kpi strong{display:block;font-variant-numeric:tabular-nums;font-size:23px;color:#0f3d62;line-height:1.3;margin:7px 0 2px}.kpi span{font-size:10px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:13px}.cols{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:13px}.colsEven{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{margin:13px 0}.field label{font-weight:680;font-size:11px;display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:6px}.field output{font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap}input[type=range]{width:100%;accent-color:#226994;cursor:pointer}select,input[type=number]{border:1px solid #c7d5df;border-radius:4px;background:#fff;color:#17324b;padding:8px 10px;width:100%;outline-color:#4b9ece}.inlinefields{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.note{background:#f4f7fa;border-left:3px solid #7d9fb8;padding:10px 12px;color:#4a6173;font-size:11px;margin:9px 0}.warning{border-left-color:var(--gold);background:#fbf9f2}.legend{display:flex;align-items:center;flex-wrap:wrap;gap:9px 17px;color:#556c7f;font-size:11px}.dot{height:8px;width:8px;border-radius:50%;display:inline-block;margin-right:6px}.legend i{display:inline-block;height:2px;width:16px;background:#555;vertical-align:middle;margin-right:6px}.toolbar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:0 0 12px}.toolbar .group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;font-weight:750}.toolbar select{width:auto;min-width:155px;padding:7px}.btn{padding:8px 11px;border-radius:4px;border:1px solid #b7c9d6;background:white;color:#174b6e;font-size:11px;font-weight:750}.btn:hover{background:#edf4f8}.btn.primary{background:var(--nav);border-color:var(--nav);color:white}.chart{display:block;width:100%;height:335px}.chart.short{height:255px}.chart.tall{height:335px}.chart text{font-size:11px;fill:#687c8e}.chart .gridline{stroke:#e0e9ef;stroke-width:1}.chart .axis{stroke:#8ca0ad;stroke-width:1}.chart .threshold{stroke:#bd8144;stroke-width:1.7;stroke-dasharray:6 4}.chart .hoverpoint{cursor:crosshair}.footer{border-top:1px solid var(--border);padding-top:13px;color:#667a8b;font-size:10px;margin-top:18px}.footer a{color:#1b719d}.splithead{display:flex;justify-content:space-between;gap:9px;align-items:center}.muted{color:var(--muted)}.hint{font-size:11px;color:var(--muted);margin:-6px 0 12px}table{width:100%;border-collapse:collapse;font-size:11px}td,th{text-align:left;padding:9px;border-bottom:1px solid var(--border)}th{background:#f3f7fa;color:#526c7f;font-weight:800;font-size:10px}.num{text-align:right;font-variant-numeric:tabular-nums}.selected-row{background:#eaf3f8}.metricbox{border:1px solid var(--border);padding:11px;border-radius:4px}.metricbox strong{display:block;color:#103d60;font-size:17px}.metricbox small{color:var(--muted)}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.statusline{padding:11px;background:#f2f6f8;color:#3c5769;font-size:11px;border-left:3px solid var(--blue)}.tag{font-size:10px;font-weight:700;background:#e7f0f5;color:#285777;border-radius:3px;padding:3px 5px;white-space:nowrap}.tag.danger{background:#f8eded;color:#a1514d}.tag.ok{background:#eaf4f1;color:#2e776c}.stack{display:grid;gap:9px}.note strong{color:#173a57}.tablewrap{overflow:auto}.smallnote{font-size:10px;color:#6c7d8c;margin-top:7px}.policy{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.policy:last-child{border:0}.table-failure td:nth-child(n+2){text-align:right}.how{counter-reset:steps}.how p{margin:0 0 8px;padding-left:18px;position:relative}.how p::before{counter-increment:steps;content:counter(steps);position:absolute;left:0;font-weight:800;color:#21709e}.evalnote{padding:10px;background:#f7f8f8;border:1px solid #e3e8ed;font-size:11px;color:#516579}.darkline{border-top:1px solid var(--border);margin:13px 0}.infoIcon{font-size:11px;color:#7e98a8;cursor:help}.hidden{display:none!important}@media(max-width:1150px){.grid4{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}@media(max-width:850px){.layout{grid-template-columns:175px 1fr}main{padding:18px}.grid{grid-template-columns:1fr}.inlinefields{grid-template-columns:1fr}}@media(max-width:640px){.layout{display:block}aside{padding:12px}.brand{font-size:20px}.nav{grid-template-columns:repeat(3,1fr);margin:0}.tab{min-height:auto;padding:9px}.tab span,.asidefoot{display:none}.header h1{font-size:21px}.header{flex-wrap:wrap}main{padding:13px}.grid4{grid-template-columns:1fr 1fr}.colsEven,.grid3{grid-template-columns:1fr}}@media print{body{background:white}@page{size:landscape;margin:11mm}aside,.noprint{display:none!important}.layout{display:block}main{padding:0}.header{margin:0 0 8px}.page,.page.active{display:block!important;break-after:page}.panel,.kpi,.grid,.cols{break-inside:avoid}.chart{max-height:245px}.page:last-of-type{break-after:auto}}
+</style>
+</head>
+<body><div class="layout"><aside>
+  <div><div class="brand">DRAKEN</div><div class="subbrand">Saab regional aircraft<br>market-entry decision study</div></div>
+  <nav class="nav" aria-label="Dashboard pages">
+    <button class="tab active" data-tab="inputs"><strong>01 / Inputs</strong><span>Entry modes, stochastic futures, success thresholds</span></button>
+    <button class="tab" data-tab="visualize"><strong>02 / Scenario & variability</strong><span>Individual futures, outcomes, sensitivity drivers</span></button>
+    <button class="tab" data-tab="vulnerable"><strong>03 / Vulnerability & comparison</strong><span>Systematic failure regions, signposts and strategies</span></button>
+  </nav>
+  <div class="asidefoot">ASDL × Saab project concept<br>DRAKEN · interactive v0.3<br><br>NOT A FORECAST<br>Stochastic simulation and results are synthetic demonstration logic. No JMP surrogate or optimized RL policy is connected.</div>
+</aside>
+<main>
+ <header class="header"><div><div class="eyebrow">Civil-market-entry strategy / robust design</div><h1 id="headerTitle">Inputs & success criteria</h1><div id="headerSub" class="sub">Define the entry strategy, stochastic disruptions and minimum acceptable performance.</div></div><div style="text-align:right"><span class="badge">ILLUSTRATIVE MODEL</span><div class="tiny" style="margin-top:7px">DRAKEN working prototype · 2026</div></div></header>
+ <section class="page active" id="inputs">
+  <div class="grid4">
+   <div class="kpi"><small>Selected entry strategy</small><strong id="iStrategy" style="font-size:17px">Partnership</strong><span>Evaluated under identical sampled futures</span></div>
+   <div class="kpi"><small>Annual market-shock chance</small><strong id="iHazard">15%</strong><span>Sampled each simulation year</span></div>
+   <div class="kpi"><small>NPV success threshold</small><strong id="iThreshold">€0.0bn</strong><span>In the chosen reference year</span></div>
+   <div class="kpi"><small>Simulated futures</small><strong id="iRuns">160</strong><span>Fixed seed · reproducible</span></div>
+  </div>
+  <div class="grid">
+   <div class="panel"><h2>Strategy & program settings</h2><p class="hint">Use the four entry modes from the DRAKEN problem formulation.</p>
+    <div class="field"><label for="strategy">Entry mode</label><select id="strategy"><option value="inhouse">In-house development</option><option value="acquisition">Acquisition</option><option value="partnership" selected>Partnership</option><option value="stake">Minority stake</option></select></div>
+    <div class="field"><label for="eis">Nominal entry into service / operation</label><select id="eis"><option value="2031">2031</option><option value="2033" selected>2033</option><option value="2035">2035</option><option value="2037">2037</option></select></div>
+    <div class="inlinefields">
+      <div class="field"><label for="budget">Available capital <output id="vBudget"></output></label><input type="range" id="budget" min="0.5" max="7" step="0.1" value="3.2"></div>
+      <div class="field"><label for="discount">Discount rate <output id="vDiscount"></output></label><input type="range" id="discount" min="0" max="0.16" step="0.01" value="0.08"></div>
+      <div class="field"><label for="costRisk">Max additional cost overrun <output id="vCostRisk"></output></label><input type="range" id="costRisk" min="0" max="0.8" step="0.05" value="0.30"></div>
+      <div class="field"><label for="delayMax">Max program delay <output id="vDelayMax"></output></label><input type="range" id="delayMax" min="0" max="60" step="6" value="24"></div>
+      <div class="field"><label for="response">Management response lag <output id="vResponse"></output></label><input type="range" id="response" min="0" max="24" step="3" value="6"></div>
+      <div class="field"><label for="signal">Monitoring / signal quality <output id="vSignal"></output></label><input type="range" id="signal" min="0" max="1" step="0.1" value="0.7"></div>
+    </div>
+   </div>
+   <div class="panel"><h2>External stochastic environment</h2><p class="hint">For each simulated future, events are sampled from adjustable ranges and annual event probabilities.</p>
+    <div class="inlinefields">
+      <div class="field"><label for="growth">Baseline annual market growth <output id="vGrowth"></output></label><input type="range" id="growth" min="-0.02" max="0.06" step="0.005" value="0.025"></div>
+      <div class="field"><label for="shockProb">Demand-shock probability / year <output id="vShockProb"></output></label><input type="range" id="shockProb" min="0" max="0.5" step="0.025" value="0.15"></div>
+      <div class="field"><label for="shockSeverity">Max demand drop per shock <output id="vShockSeverity"></output></label><input type="range" id="shockSeverity" min="0" max="0.6" step="0.05" value="0.30"></div>
+      <div class="field"><label for="competitorProb">Competitor entry probability / year <output id="vCompetitorProb"></output></label><input type="range" id="competitorProb" min="0" max="0.3" step="0.025" value="0.075"></div>
+      <div class="field"><label for="competitorImpact">Max market-share loss after entry <output id="vCompetitorImpact"></output></label><input type="range" id="competitorImpact" min="0" max="0.5" step="0.05" value="0.20"></div>
+      <div class="field"><label for="runs">Number of Monte Carlo futures <output id="vRuns"></output></label><input type="range" id="runs" min="80" max="400" step="40" value="160"></div>
+    </div>
+    <div class="note warning"><strong>Interpretation:</strong> These are illustrative probability and severity ranges, not estimates of actual aviation-market hazards. A demand shock temporarily depresses sales; competitor entry reduces achievable share in this demonstration model.</div>
+   </div>
+  </div>
+  <div class="panel"><h2>Define minimum success thresholds</h2><div class="hint">A future <b>fails</b> if it breaches any selected requirement. Change these criteria to explore how robust strategy rankings change.</div>
+    <div class="grid4" style="margin-bottom:0">
+     <div class="field"><label for="npvMin">Minimum NPV <output id="vNpvMin"></output></label><input id="npvMin" type="range" min="-2" max="2" step="0.1" value="0"></div>
+     <div class="field"><label for="roiMin">Minimum program ROI <output id="vRoiMin"></output></label><input id="roiMin" type="range" min="-0.5" max="1.5" step="0.05" value="0.15"></div>
+     <div class="field"><label for="shareMin">Minimum mature market share <output id="vShareMin"></output></label><input id="shareMin" type="range" min="0" max="0.15" step="0.005" value="0.035"></div>
+     <div class="field"><label for="costCap">Max investment committed <output id="vCostCap"></output></label><input id="costCap" type="range" min="0.5" max="8" step="0.25" value="4.0"></div>
+    </div>
+    <div class="note"><b>Cost cap vs capital available:</b> the success cost cap is a user-defined criterion; available capital separately determines whether a strategy is feasible without additional funding. Both conditions are checked in the demonstration.</div>
+  </div>
+  <div class="panel"><div class="splithead"><h2>Analysis workflow</h2><div class="tiny">From controllable inputs to explainable simulated outcomes</div></div>
+   <div class="grid3"><div class="metricbox"><b>1 / Define futures</b><div class="sm muted">Market shock timing, severity, competitor entries and internal execution deviations.</div></div><div class="metricbox"><b>2 / Evaluate strategies</b><div class="sm muted">Simulate paths, compute outcomes and attribute performance changes to uncertainties.</div></div><div class="metricbox"><b>3 / Identify vulnerabilities</b><div class="sm muted">Compare against performance thresholds and locate recurring failure combinations.</div></div></div>
+   <div class="toolbar" style="margin-top:13px;margin-bottom:0"><div class="group"><button class="btn primary" id="goResults">View simulations →</button><button class="btn" id="presetBase">Reset assumptions</button></div><button class="btn" id="exportJson">Export inputs & results (JSON)</button></div>
+  </div>
+ </section>
+ <section class="page" id="visualize">
+   <div class="grid4">
+     <div class="kpi"><small>Median final NPV</small><strong id="kMedian">—</strong><span>Across sampled futures</span></div>
+     <div class="kpi"><small>Probability of passing all thresholds</small><strong id="kSuccess">—</strong><span>Selected strategy</span></div>
+     <div class="kpi"><small>10–90% final NPV interval</small><strong id="kRange" style="font-size:18px">—</strong><span>Across scenarios, not a statistical CI</span></div>
+     <div class="kpi"><small>Individual future selected</small><strong id="kFuture">#01</strong><span>One reproducible path</span></div>
+   </div>
+   <div class="panel">
+     <div class="splithead"><div><h2>Scenario visualization</h2><div class="hint">One individual future against median trajectory, 10–90% uncertainty band and your minimum performance threshold.</div></div><span class="badge">STOCHASTIC DEMO</span></div>
+     <div class="toolbar noprint"><div class="group"><label for="plotStrategy">Strategy</label><select id="plotStrategy"><option value="inhouse">In-house development</option><option value="acquisition">Acquisition</option><option value="partnership" selected>Partnership</option><option value="stake">Minority stake</option></select><label for="plotMetric">Metric</label><select id="plotMetric"><option value="npv">Cumulative discounted value (NPV to date)</option><option value="roi">Cumulative ROI</option><option value="share">Market share</option></select></div><div class="group"><label for="future">Future</label><input type="number" id="future" min="1" max="160" value="1" style="width:68px"><button class="btn" id="nextFuture">Next future</button></div></div>
+     <svg class="chart" id="trajectory" viewBox="0 0 890 335" role="img" aria-label="Scenario trajectory chart with percentile band, median, single future and threshold"></svg>
+     <div class="legend" id="trajectoryLegend"><span><i style="background:#266f99"></i>Median</span><span><i style="background:#d6e6f1;height:8px"></i>10th–90th percentile</span><span><i style="background:#bf843d"></i>Individual future</span><span><i style="background:#b95c50"></i>Success threshold</span></div>
+     <div class="statusline" id="pathAnnotation" style="margin-top:13px">—</div>
+   </div>
+   <div class="colsEven">
+    <div class="panel"><h2>Variability analysis</h2><div class="hint">Which assumptions change the chosen strategy's mean final NPV? Paired perturbations use the same underlying random seeds.</div><svg class="chart short" viewBox="0 0 650 255" id="tornado" role="img" aria-label="Tornado chart comparing sensitivity of NPV to uncertainties"></svg><div class="smallnote">Local one-at-a-time sensitivity, not causal attribution of correlated stochastic effects. Sensitivity ranges are illustrative.</div></div>
+    <div class="panel"><h2>Strategy comparison under common futures</h2><div class="hint">Every strategy is evaluated against the same sampled market shock sequences.</div><div class="tablewrap"><table><thead><tr><th>Entry strategy</th><th class="num">Median NPV</th><th class="num">P(success)</th><th class="num">P(loss)</th></tr></thead><tbody id="comparisonBody"></tbody></table></div><div class="note" id="comparisonInsight" style="margin-top:12px">—</div><div class="smallnote">No optimized MDP/RL policy is represented. The strategies currently follow fixed demonstration response rules.</div></div>
+   </div>
+ </section>
+ <section class="page" id="vulnerable">
+   <div class="grid4">
+    <div class="kpi"><small>Failure probability</small><strong id="vFail">—</strong><span>Any stated threshold breached</span></div>
+    <div class="kpi"><small>Most common failed criterion</small><strong id="vReason" style="font-size:16px">—</strong><span>Criteria may fail together</span></div>
+    <div class="kpi"><small>Local fragility index</small><strong id="vFragility">—</strong><span>Nearby scenario failure share</span></div>
+    <div class="kpi"><small>Conditional failure region</small><strong id="vRedCells">—</strong><span>Grid cells where P(failure) ≥ 80%</span></div>
+   </div>
+   <div class="colsEven">
+    <div class="panel"><h2>Vulnerability regions</h2><div class="hint">Conditional failure probability across demand-drop severity × realized cost overrun. Other uncertainties continue to vary.</div><div class="toolbar noprint"><div class="group"><label for="heatStrategy">Strategy</label><select id="heatStrategy"><option value="inhouse">In-house development</option><option value="acquisition">Acquisition</option><option value="partnership" selected>Partnership</option><option value="stake">Minority stake</option></select></div></div><svg id="heatmap" class="chart tall" viewBox="0 0 620 335" role="img" aria-label="Conditional failure heatmap"></svg><div class="legend"><span><i style="background:#dcebe7;height:9px"></i>Lower failure probability</span><span><i style="background:#e3c9a0;height:9px"></i>Intermediate</span><span><i style="background:#c36a64;height:9px"></i>High (≥80%)</span></div><div class="smallnote">Cell values are estimated from 36 synthetic futures per condition. Hover over a cell to read its value.</div></div>
+    <div class="panel"><h2>Systematic failure & early signposts</h2><div class="hint">Signposts are observed indicators or combinations that may justify reassessing a strategy.</div><div id="signpostSummary" class="note">—</div><div class="tablewrap"><table class="table-failure"><thead><tr><th>Criteria</th><th>Failure rate</th></tr></thead><tbody id="failureReasons"></tbody></table></div><div class="darkline"></div><h3>Near-boundary risk</h3><p id="fragilityExplanation" class="sm">—</p><div class="evalnote"><b>Fragility index (0–100):</b> percentage of nine nearby severity/overrun combinations with conditional failure probability above 50%. It is a sensitivity descriptor—not a validated enterprise risk score.</div></div>
+   </div>
+   <div class="panel"><h2>Strategy robustness comparison</h2><div class="hint">Synthesis across all simulated futures for each entry mode. Use this together with the failure map, rather than reducing every outcome to one arbitrary index.</div><div class="tablewrap"><table><thead><tr><th>Strategy</th><th class="num">Mean NPV</th><th class="num">10% tail mean NPV</th><th class="num">P(success)</th><th class="num">P(loss)</th><th class="num">Median ROI</th><th class="num">Median share</th></tr></thead><tbody id="robustnessBody"></tbody></table></div><div id="robustNote" class="note" style="margin-top:12px">—</div></div>
+   <div class="panel"><h2>How decision-makers could use signposts</h2><div class="grid3"><div class="metricbox"><b>Monitor</b><p class="sm muted">Track demand indicators, forecast revisions, supplier/technology delays and capacity changes.</p></div><div class="metricbox"><b>Reassess</b><p class="sm muted">When signposts are crossed, re-run all strategies under updated uncertainty distributions.</p></div><div class="metricbox"><b>Adapt</b><p class="sm muted">Explore staged funding, partnering, redirecting or terminating under an eventual optimized decision policy.</p></div></div></div>
+ </section>
+ <footer class="footer"><b>Model integrity:</b> All stochastic rates, costs, contribution margins, market shares and correlations in this browser demo are invented for interface exploration. The output bands represent distributions across simulated futures, not estimation confidence intervals. Replace the engine with JMP-fitted surrogate models and validated transition/reward models before making Saab decisions. <span class="noprint">· <button class="btn" id="printAll">Print / save report pages</button></span></footer>
+</main></div>
+<script>
+'use strict';
+// -------------------------------- EDITABLE DEMONSTRATION ENGINE --------------------------------
+// Replace simulateOne()/world() with model or server outputs when JMP surrogates and MDP/RL become available.
+// Numbers below are SYNTHETIC, NOT empirical estimates of Saab or regional aircraft markets.
+const CONFIG={
+ inhouse:{label:'In-house development',capex:4.2,share:.095,contribution:.016,annualCost:.13,lag:0,color:'#236994'},
+ acquisition:{label:'Acquisition',capex:2.65,share:.078,contribution:.017,annualCost:.10,lag:0,color:'#b28a43'},
+ partnership:{label:'Partnership',capex:1.9,share:.071,contribution:.0175,annualCost:.115,lag:0,color:'#25877d'},
+ stake:{label:'Minority stake',capex:.80,share:.047,contribution:.012,annualCost:.065,lag:0,color:'#7c88a3'}
+};
+const KEYS=['strategy','eis','budget','discount','costRisk','delayMax','response','signal','growth','shockProb','shockSeverity','competitorProb','competitorImpact','runs','npvMin','roiMin','shareMin','costCap'];
+const defaultValues={strategy:'partnership',eis:2033,budget:3.2,discount:.08,costRisk:.3,delayMax:24,response:6,signal:.7,growth:.025,shockProb:.15,shockSeverity:.30,competitorProb:.075,competitorImpact:.20,runs:160,npvMin:0,roiMin:.15,shareMin:.035,costCap:4.0};
+const $=id=>document.getElementById(id);
+const YEARS=Array.from({length:17},(_,i)=>2027+i);
+let state={},result={},heatCache={},selectedPage='inputs',plotStrategy='partnership',heatStrategy='partnership',plotMetric='npv';
+const rng=seed=>{let x=seed|0;return ()=>{x=(x*1664525+1013904223)|0;return (x>>>0)/4294967296}};
+const avg=a=>a.reduce((x,y)=>x+y,0)/(a.length||1);
+const sorted=a=>[...a].sort((x,y)=>x-y);
+const quant=(a,p)=>{const b=sorted(a);if(!b.length)return 0;const q=(b.length-1)*p,k=Math.floor(q);return b[k]+(b[Math.min(k+1,b.length-1)]-b[k])*(q-k)};
+const cap=(x,a,b)=>Math.max(a,Math.min(b,x));
+const percent=x=>(x*100).toFixed(0)+'%';
+const money=x=>(x<0?'−':'')+'€'+Math.abs(x).toFixed(2)+'bn';
+function readInputs(){let a={};KEYS.forEach(k=>a[k]=k==='strategy'?$(k).value:Number($(k).value));return a}
+// Shared random shocks per scenario index: all four strategies see the same future.
+function world(s,index,override={}){
+ const r=rng(125912+index*100983),arr=[],shocks=[];let competition=1,hasEntered=false;
+ const realizedCost=(r()*.9+.1)*s.costRisk;const engDraw=r(),shareDraw=r();
+ for(let j=0;j<YEARS.length;j++){
+  const shockOccurs=r()<s.shockProb;
+  const drop=shockOccurs?(0.4+0.6*r())*s.shockSeverity:0;
+  if(shockOccurs)shocks.push({year:YEARS[j],drop});
+  if(!hasEntered&&r()<s.competitorProb){hasEntered=true;competition*=1-s.competitorImpact*(.5+.5*r());}
+  // overlapping temporary demand shocks recover in three simulation years
+  let f=1;
+  for(const a of shocks){let age=YEARS[j]-a.year;if(age>=0&&age<=3)f*=1-a.drop*(1-age/4)}
+  arr.push({year:YEARS[j],demand:520*Math.pow(1+s.growth,j)*f,competition,shock:shockOccurs,drop});
+ }
+ return {arr,realizedCost:override.costOverrun??realizedCost,delay:Math.round(engDraw*s.delayMax/12),shareJitter:.94+.12*shareDraw,shocks,competitor:hasEntered,forcedDrop:override.demandDrop};
+}
+function simulateOne(k,s,index,override={}){
+ const c=CONFIG[k],w=world(s,index,override);
+ const extraDelay=Math.round((s.response/12)*(1-s.signal)*w.delay*.35);
+ const eis=s.eis+c.lag+w.delay+extraDelay;
+ const invested=c.capex*(1+w.realizedCost),preYears=[2027,2028,2029,2030,2031,2032];
+ let ann=[],npv=0,undiscounted=0;
+ const share=c.share*w.shareJitter;
+ for(let j=0;j<YEARS.length;j++){
+  const y=YEARS[j],e=w.arr[j];
+  let flow=0;
+  if(preYears.includes(y))flow-=invested/6;
+  if(y>=eis){
+   let ramp=Math.min(1,Math.max(0,(y-eis+1)/4));
+   const forced=(typeof w.forcedDrop==='number'&&y>=2033&&y<=2040)?1-w.forcedDrop*(1-(y-2033)/8):1;
+   const annualShare=share*e.competition*ramp;
+   const volume=e.demand*forced*annualShare;
+   flow+=volume*c.contribution-c.annualCost;
+  }
+  undiscounted+=flow;npv+=flow/Math.pow(1+s.discount,j);
+  const capitalUsed=preYears.filter(yr=>yr<=y).length/6*invested;
+  const marketShare=y>=eis?share*e.competition*Math.min(1,(y-eis+1)/4):0;
+  ann.push({year:y,npv,roi:capitalUsed?undiscounted/invested:0,share:marketShare,flow,raw:undiscounted});
+ }
+ const tail=ann[ann.length-1];
+ const criteria={npv:tail.npv<s.npvMin,roi:tail.roi<s.roiMin,share:tail.share<s.shareMin,cap:invested>s.costCap||invested>s.budget};
+ const fails=Object.values(criteria).some(Boolean);
+ return {series:ann,npv:tail.npv,roi:tail.roi,share:tail.share,invested,eis,criteria,fails,shocks:w.shocks,competitor:w.competitor};
+}
+function summarize(k,s,N){const paths=Array.from({length:N},(_,i)=>simulateOne(k,s,i+1));const n=paths.map(p=>p.npv),r=paths.map(p=>p.roi),sh=paths.map(p=>p.share);const worst=sorted(n).slice(0,Math.ceil(N*.1));return {paths,mean:avg(n),median:quant(n,.5),lo:quant(n,.1),hi:quant(n,.9),loss:paths.filter(p=>p.npv<0).length/N,success:paths.filter(p=>!p.fails).length/N,cvar:avg(worst),medROI:quant(r,.5),medShare:quant(sh,.5),reasons:['npv','roi','share','cap'].map(key=>({key,rate:paths.filter(p=>p.criteria[key]).length/N}))};}
+function updateOutputs(){
+ state=readInputs(); const s=state;const N=s.runs;
+ for(const key of Object.keys(CONFIG))result[key]=summarize(key,s,N);
+ $('iStrategy').textContent=CONFIG[s.strategy].label;$('iHazard').textContent=percent(s.shockProb);$('iThreshold').textContent=money(s.npvMin);$('iRuns').textContent=N;
+ const labels={budget:money(s.budget),discount:percent(s.discount),costRisk:percent(s.costRisk),delayMax:s.delayMax+' mo',response:s.response+' mo',signal:percent(s.signal),growth:(s.growth*100).toFixed(1)+'%',shockProb:percent(s.shockProb),shockSeverity:percent(s.shockSeverity),competitorProb:(s.competitorProb*100).toFixed(1)+'%',competitorImpact:percent(s.competitorImpact),runs:N,npvMin:money(s.npvMin),roiMin:percent(s.roiMin),shareMin:(s.shareMin*100).toFixed(1)+'%',costCap:money(s.costCap)};
+ for(const [k,v] of Object.entries(labels))$('v'+k[0].toUpperCase()+k.slice(1)).textContent=v;
+ $('future').max=N;$('future').value=cap(Number($('future').value)||1,1,N);
+ renderTrajectories();renderTornado();renderCompare();renderHeat();renderVulnerability();
+}
+function numMetric(v,m){return m==='npv'?money(v):percent(v)}
+function chartPath(series,xx,yy){return series.map((v,i)=>(i?'L':'M')+xx(i).toFixed(1)+','+yy(v).toFixed(1)).join(' ')}
+function bandPath(lo,hi,xx,yy){return 'M'+hi.map((v,i)=>xx(i).toFixed(1)+','+yy(v).toFixed(1)).join(' L')+' L'+lo.map((v,i)=>xx(lo.length-1-i).toFixed(1)+','+yy(lo[lo.length-1-i]).toFixed(1)).join(' L')+' Z'}
+function renderTrajectories(){
+ const s=state,k=plotStrategy,m=plotMetric,res=result[k];if(!res)return;const n=cap(Number($('future').value)||1,1,s.runs),p=res.paths[n-1];$('kFuture').textContent='#'+String(n).padStart(2,'0');$('kMedian').textContent=numMetric(res.median,'npv');$('kSuccess').textContent=percent(res.success);$('kRange').textContent=money(res.lo)+' to '+money(res.hi);
+ const stats=YEARS.map((_,i)=>{const a=res.paths.map(p=>p.series[i][m]);return {med:quant(a,.5),low:quant(a,.1),high:quant(a,.9)}}),personal=p.series.map(x=>x[m]);
+ let low=stats.map(x=>x.low),high=stats.map(x=>x.high),med=stats.map(x=>x.med),thr=m==='npv'?s.npvMin:m==='roi'?s.roiMin:s.shareMin;
+ let min=Math.min(...low,...personal,thr),max=Math.max(...high,...personal,thr),gap=Math.max(.05,(max-min)*.15);min-=gap;max+=gap;
+ const W=890,H=335,L=64,R=15,T=14,B=43,x=i=>L+i*(W-L-R)/(YEARS.length-1),y=v=>T+(max-v)*(H-T-B)/(max-min);
+ let html='';for(let j=0;j<=5;j++){const q=min+(max-min)*j/5,Y=y(q);const str=m==='npv'?'€'+q.toFixed(1):m==='roi'?(q*100).toFixed(0)+'%':(q*100).toFixed(1)+'%';html+=`<line class="gridline" x1="${L}" y1="${Y}" x2="${W-R}" y2="${Y}"/><text x="${L-8}" y="${Y+4}" text-anchor="end">${str}</text>`}YEARS.forEach((year,i)=>{if(i%2===0)html+=`<text x="${x(i)}" y="${H-12}" text-anchor="middle">${year}</text>`});
+ html+=`<path d="${bandPath(low,high,x,y)}" fill="#cadeec" opacity=".68"/><line class="threshold" x1="${L}" x2="${W-R}" y1="${y(thr)}" y2="${y(thr)}"/>`;
+ html+=`<path d="${chartPath(med,x,y)}" fill="none" stroke="#246e99" stroke-width="3"/><path d="${chartPath(personal,x,y)}" fill="none" stroke="#bd843d" stroke-width="2.7"/>`;
+ const idx=YEARS.length-1;html+=`<circle cx="${x(idx)}" cy="${y(personal[idx])}" r="4.5" fill="#bd843d" stroke="#fff" stroke-width="1.5"/>`;
+ $('trajectory').innerHTML=html;
+ const status=p.fails?'fails':'meets';let why=Object.keys(p.criteria).filter(c=>p.criteria[c]).map(c=>({npv:'NPV',roi:'ROI',share:'market share',cap:'capital / cost cap'}[c]));$('pathAnnotation').innerHTML=`<b>Future ${n}:</b> ${CONFIG[k].label} ${status} the currently selected success criteria. Final NPV <b>${money(p.npv)}</b>, ROI <b>${percent(p.roi)}</b>, mature market share <b>${(p.share*100).toFixed(1)}%</b>, investment <b>${money(p.invested)}</b>. ${why.length?'Failed: '+why.join(', ')+'.':'All thresholds met.'} This future included ${p.shocks.length} demand-shock event(s) and ${p.competitor?'a competitor entry':'no competitor entry'}.`;
+}
+function renderTornado(){const k=plotStrategy,s=state;const vars=[
+ {label:'Market growth',key:'growth',d:.015,min:-.02,max:.06},
+ {label:'Shock probability',key:'shockProb',d:.10,min:0,max:.5},
+ {label:'Demand-drop severity',key:'shockSeverity',d:.15,min:0,max:.6},
+ {label:'Competitor entry',key:'competitorProb',d:.06,min:0,max:.3},
+ {label:'Cost uncertainty',key:'costRisk',d:.15,min:0,max:.8},
+ {label:'Max EIS delay',key:'delayMax',d:12,min:0,max:60},
+ {label:'Response lag',key:'response',d:6,min:0,max:24}];
+ const base=summarize(k,s,Math.min(s.runs,120)).mean;let rows=vars.map(v=>{const l=summarize(k,{...s,[v.key]:cap(s[v.key]-v.d,v.min,v.max)},Math.min(s.runs,120)).mean-base;const h=summarize(k,{...s,[v.key]:cap(s[v.key]+v.d,v.min,v.max)},Math.min(s.runs,120)).mean-base;return{label:v.label,left:l,right:h,rank:Math.abs(h-l)}}).sort((a,b)=>b.rank-a.rank).slice(0,6);
+ const max=Math.max(.1,...rows.flatMap(r=>[Math.abs(r.left),Math.abs(r.right)])),W=650,H=255,c=305,m=(W-370)/max,htmlParts=[];htmlParts.push(`<line x1="${c}" x2="${c}" y1="15" y2="${H-12}" stroke="#8b9fad"/>`);
+ rows.forEach((r,i)=>{const y=22+i*37;htmlParts.push(`<text x="8" y="${y+12}" style="font-size:11px;fill:#254b65">${r.label}</text>`);for(const z of [r.left,r.right]){const x=c+Math.min(0,z)*m;htmlParts.push(`<rect x="${x}" y="${y}" width="${Math.max(1,Math.abs(z)*m)}" height="13" rx="1" fill="${z<0?'#c28b5a':'#397da5'}"/>`)}const lab=v=>(v>=0?'+':'')+v.toFixed(2);htmlParts.push(`<text x="${c+r.left*m}" y="${y+25}" text-anchor="middle" style="font-size:9px">${lab(r.left)}</text><text x="${c+r.right*m}" y="${y+25}" text-anchor="middle" style="font-size:9px">${lab(r.right)}</text>`)});
+ $('tornado').innerHTML=htmlParts.join('');
+}
+function renderCompare(){const k=plotStrategy;const list=Object.keys(CONFIG);$('comparisonBody').innerHTML=list.map(key=>{const r=result[key];return`<tr ${key===k?'class="selected-row"':''}><td>${CONFIG[key].label}</td><td class="num">${money(r.median)}</td><td class="num">${percent(r.success)}</td><td class="num">${percent(r.loss)}</td></tr>`}).join('');const best=Object.entries(result).sort((a,b)=>b[1].success-a[1].success)[0];$('comparisonInsight').innerHTML=`<b>Illustrative best threshold-pass rate:</b> ${CONFIG[best[0]].label} (${percent(best[1].success)}). This is criterion-dependent and not an optimized strategy or a recommendation to Saab.`;}
+function shade(v){if(v>=.8)return '#c36a64';if(v>=.5)return '#e0ac75';if(v>=.2)return '#e2cfac';return '#dcebe7'}
+function heatData(k){const s=state,rows=[];for(let i=0;i<9;i++){const cost=i*.10,arr=[];for(let j=0;j<11;j++){const drop=j*.06;let nfail=0;for(let h=0;h<36;h++){const path=simulateOne(k,s,h+401,{costOverrun:cost,demandDrop:drop});if(path.fails)nfail++}arr.push({cost,drop,p:nfail/36})}rows.push(arr)}return rows}
+function renderHeat(){heatCache=heatData(heatStrategy);const W=620,H=335,L=82,T=14,cw=45,ch=26;let html='';for(let i=0;i<9;i++)for(let j=0;j<11;j++){const a=heatCache[i][j];html+=`<rect x="${L+j*cw}" y="${T+i*ch}" width="${cw-2}" height="${ch-2}" rx="1.5" fill="${shade(a.p)}"><title>Demand drop ${percent(a.drop)}, cost overrun ${percent(a.cost)} → P(failure) ${percent(a.p)}</title></rect>`}for(let i=0;i<9;i+=2)html+=`<text x="${L-10}" y="${T+i*ch+16}" text-anchor="end">${i*10}%</text>`;for(let j=0;j<11;j+=2)html+=`<text x="${L+j*cw+cw/2}" y="${T+9*ch+15}" text-anchor="middle">${j*6}%</text>`;html+=`<text x="${L+5.5*cw}" y="${T+9*ch+37}" text-anchor="middle" style="font-size:12px;fill:#415f73">Demand shock severity</text><text x="17" y="${T+4.5*ch}" text-anchor="middle" transform="rotate(-90 17 ${T+4.5*ch})" style="font-size:12px;fill:#415f73">Realized cost overrun</text>`;$('heatmap').innerHTML=html;
+ const red=heatCache.flat().filter(x=>x.p>=.8);$('vRedCells').textContent=red.length+' / '+heatCache.flat().length;
+ // 3×3 neighborhood around a 30% shock and the adjustable cost-risk midpoint
+ const targetCost=cap(Math.round((sCapped(state.costRisk*.5))/.1),1,7);const targetDrop=cap(Math.round(state.shockSeverity/.06),1,9);const local=[];for(let di=-1;di<=1;di++)for(let dj=-1;dj<=1;dj++)local.push(heatCache[targetCost+di][targetDrop+dj]);const frag=local.filter(x=>x.p>.5).length/9;
+ $('vFragility').textContent=percent(frag);$('fragilityExplanation').innerHTML=`Near the currently selected severity range (${percent(targetDrop*.06)} demand drop; ${percent(targetCost*.10)} realized cost overrun), <b>${local.filter(x=>x.p>.5).length} of 9</b> adjacent conditions have a conditional failure probability above 50%.`;
+ if(red.length){const first=red.filter(a=>a.drop>=.12).reduce((best,a)=>!best||a.cost+a.drop<best.cost+best.drop?a:best,null)||red[0];$('signpostSummary').innerHTML=`<b>Candidate failure condition (illustrative):</b> A ${percent(first.drop)} demand shock combined with a ${percent(first.cost)} cost overrun lies in a region where at least 80% of conditional futures breach one or more chosen thresholds. This is an example threshold combination, not a universal cut-off.`}else{$('signpostSummary').innerHTML='<b>No high-failure cell</b> was identified within the displayed severity/overrun grid at the 80% rule. The selected strategy can still fail outside this grid or through other stochastic factors.'}
+}
+const sCapped=x=>cap(x,0,.8);
+function renderVulnerability(){const r=result[heatStrategy];$('vFail').textContent=percent(1-r.success);const reasons=r.reasons.sort((a,b)=>b.rate-a.rate);const nam={npv:'NPV below threshold',roi:'ROI below threshold',share:'Market share below floor',cap:'Investment above limit'};$('vReason').textContent=nam[reasons[0].key];$('failureReasons').innerHTML=reasons.map(a=>`<tr><td>${nam[a.key]}</td><td class="num">${percent(a.rate)}</td></tr>`).join('');
+ $('robustnessBody').innerHTML=Object.keys(CONFIG).map(k=>{const v=result[k];return`<tr ${k===heatStrategy?'class="selected-row"':''}><td>${CONFIG[k].label}</td><td class="num">${money(v.mean)}</td><td class="num">${money(v.cvar)}</td><td class="num">${percent(v.success)}</td><td class="num">${percent(v.loss)}</td><td class="num">${percent(v.medROI)}</td><td class="num">${(v.medShare*100).toFixed(1)}%</td></tr>`}).join('');$('robustNote').textContent='Robustness is evaluated against the user-defined NPV, ROI, market-share and investment thresholds. Different criteria can produce different rankings; lower-tail mean is the mean NPV of the worst 10% of futures.';
+}
+function selectPage(id){selectedPage=id;document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',el.dataset.tab===id));document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id===id));const labels={inputs:['Inputs & success criteria','Define the entry strategy, stochastic disruptions and minimum acceptable performance.'],visualize:['Scenario trajectories & variability','Examine individual futures, performance ranges, key drivers and strategy comparisons.'],vulnerable:['Vulnerability & strategy robustness','Locate systematic failure regions and identify useful early signposts.']};$('headerTitle').textContent=labels[id][0];$('headerSub').textContent=labels[id][1];window.scrollTo({top:0,behavior:'instant'})}
+KEYS.forEach(k=>$(k).addEventListener('input',()=>{if(k==='strategy'){plotStrategy=heatStrategy=$(k).value;$('plotStrategy').value=plotStrategy;$('heatStrategy').value=heatStrategy}updateOutputs()}));
+for(const b of document.querySelectorAll('[data-tab]'))b.addEventListener('click',()=>selectPage(b.dataset.tab));
+$('goResults').addEventListener('click',()=>selectPage('visualize'));
+$('plotStrategy').addEventListener('change',e=>{plotStrategy=e.target.value;renderTrajectories();renderTornado();renderCompare()});
+$('plotMetric').addEventListener('change',e=>{plotMetric=e.target.value;renderTrajectories()});
+$('future').addEventListener('input',()=>renderTrajectories());
+$('nextFuture').addEventListener('click',()=>{$('future').value=1+(Number($('future').value)%state.runs);renderTrajectories()});
+$('heatStrategy').addEventListener('change',e=>{heatStrategy=e.target.value;renderHeat();renderVulnerability()});
+$('presetBase').addEventListener('click',()=>{for(const [k,v] of Object.entries(defaultValues))$(k).value=v;plotStrategy=heatStrategy=defaultValues.strategy;$('plotStrategy').value=$('heatStrategy').value=defaultValues.strategy;$('future').value=1;updateOutputs()});
+$('exportJson').addEventListener('click',()=>{const obj={version:'DRAKEN demo 0.3',model:'Unvalidated synthetic stochastic prototype',inputs:state,strategies:Object.fromEntries(Object.entries(result).map(([k,r])=>[k,{meanNPV:r.mean,medianNPV:r.median,NPV10:r.lo,NPV90:r.h,probabilitySuccess:r.success,probabilityLoss:r.loss,downsideCVaR10:r.cvar,medianROI:r.medROI,medianMarketShare:r.medShare}]))};const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='draken_synthetic_scenarios.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)});
+$('printAll').addEventListener('click',()=>window.print());
+updateOutputs();
+</script>
+</body></html>
