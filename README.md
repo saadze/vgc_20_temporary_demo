@@ -22,10 +22,3 @@ Keep these three files **in the same folder** so the relative `href` and `src` l
 - **Charts and tables:** edit the `render…()` / `svg…()` functions.
 
 **Model status:** all numerical parameters remain illustrative, not Saab forecasts.
-
-
-### If dashboard.js is blocked by your browser
-
-- Open `draken_dashboard_standalone.html` from the same ZIP: all HTML, CSS, and JavaScript are embedded, so no external resources need to load.
-- Or use `dashboard_source.txt` as a download-friendly copy of `dashboard.js`, and rename it to `dashboard.js` in your project folder.
-- To use the three-file version, extract the ZIP first and open `index.html` from the extracted folder. Do not open `index.html` directly inside the ZIP or through an online file preview because relative links can fail.
