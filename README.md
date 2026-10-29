@@ -1,4 +1,4 @@
-# DRAKEN dashboard — editable source
+# DRAKEN dashboard
 
 This is a **formatting-only** reorganization of the uploaded v0.6 dashboard.
 All simulated strategy assumptions and demonstration calculations are unchanged.
